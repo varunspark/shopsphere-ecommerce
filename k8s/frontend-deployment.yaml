@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shopsphere-frontend
+  labels:
+    app: shopsphere-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: shopsphere-frontend
+  template:
+    metadata:
+      labels:
+        app: shopsphere-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: <DOCKERHUB_USERNAME>/shopsphere-frontend:latest
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "64Mi"
+            limits:
+              cpu: "150m"
+              memory: "128Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: shopsphere-frontend
+spec:
+  selector:
+    app: shopsphere-frontend
+  ports:
+    - port: 80
+      targetPort: 80
+  type: LoadBalancer
