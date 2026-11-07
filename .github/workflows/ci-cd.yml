@@ -12,7 +12,7 @@ env:
 
 jobs:
   # ------------------------------------------------------------------
-  # 1. Lint + Unit Test the backend
+  # 1. ESLint + Unit Test the backend
   # ------------------------------------------------------------------
   backend-test:
     name: Backend Lint & Test
@@ -44,7 +44,7 @@ jobs:
           JWT_SECRET: ci-test-secret
 
   # ------------------------------------------------------------------
-  # 2. Lint + Build the frontend
+  # 2. ESLint + Build the frontend
   # ------------------------------------------------------------------
   frontend-build:
     name: Frontend Lint & Build
